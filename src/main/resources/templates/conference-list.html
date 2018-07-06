@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Conference List</title>
+</head>
+<body>
+<h1>
+    Conference List
+</h1>
+<table>
+    <tr th:each="conference : ${conferences}">
+        <td th:text="${conference.name}">Name</td>
+    </tr>
+</table>
+<a th:href="@{/}">Home screen</a>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>New Conference Page</title>
+</head>
+<body>
+<div id="content">
+    <form name="f" th:action='@{/conference}' method="POST">
+        <table>
+            <tr><td>Name:</td><td>
+                <input type='text' name="name" value=""/></td></tr>
+            <tr><td>Start date:</td><td>
+                <input type="text" name="startDate" placeholder="MM/DD/YYYY" value=""/></td></tr>
+            <tr><td>End date:</td><td>
+                <input type="text" name="endDate" placeholder="MM/DD/YYYY" value=""/></td></tr>
+            <tr><td colspan="2">
+                <input name="submit" type="submit" value="Sign in"/></td></tr>
+        </table>
+    </form>
+    <a th:href="@{/}">Home screen</a>
+</div>
+
+</body>
+</html>
