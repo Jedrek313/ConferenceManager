@@ -1,9 +1,8 @@
 package pl.edu.wat.student.pienkowski.jedrzej.conference.entity;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.util.Set;
 
 @Entity
 public class User {
@@ -28,5 +27,13 @@ public class User {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 }

@@ -1,4 +1,5 @@
---INSERT INTO `user` (`username`,`password`) VALUES ('admin','admin');
+INSERT INTO `user` (`username`,`password`, `role`) VALUES ('admin','$2a$04$uSxj0duHoUsvNGL0x8OAoeK/VnLaryA07FJqsWb8kSKPw0nXdTihS','ADMIN');
+INSERT INTO `user` (`username`,`password`, `role`) VALUES ('guest','$2a$04$AD39vuLXlHVb1V1qiCJkX.zDADXDthoO83elWa3Un1eQRXIqvnlp.','GUEST');
 --INSERT INTO `user_role` (`id`,`username`,`role`) VALUES (1,'admin','ROLE_GUEST');
 --INSERT INTO `user_role` (`id`,`username`,`role`) VALUES (2,'admin','ROLE_ADMIN');
 
