@@ -22,7 +22,30 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
+        auth.userDetailsService(userDetailsService).passwordEncoder(bCryptPasswordEncoder());
+    }
+
+    @Bean
+    public BCryptPasswordEncoder bCryptPasswordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
+
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+
+        http.authorizeRequests()
+                .antMatchers("/registration").permitAll()
+                .anyRequest().authenticated()
+                .and()
+            .formLogin() // for form login we customize login process
+                .loginPage("/login") // for login page we will show our custom login form
+                .defaultSuccessUrl("/")
+                .permitAll() // allow everyone to see the login page
+                .and()
+            .logout().permitAll() // add logout support
+                .and()
+            .exceptionHandling()
+                .accessDeniedPage("/access-denied"); // to display fancy page when user have not right role
     }
 
     /*
@@ -39,27 +62,5 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .withUser("admin").password("{noop}admin").roles("USER","ADMIN");
     }
     */
-    @Override
-    protected void configure(HttpSecurity http) throws Exception {
-
-        http.authorizeRequests()
-                .anyRequest().authenticated()
-                .and()
-                .formLogin() // for form login we customize login process
-                .loginPage("/login") // for login page we will show our custom login form
-                .defaultSuccessUrl("/")
-                .permitAll() // allow everyone to see the login page
-                .and()
-                .logout().permitAll() // add logout support
-                .and()
-                .exceptionHandling()
-                .accessDeniedPage("/access-denied"); // to display fancy page when user have not right role
-    }
-
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        PasswordEncoder encoder = new BCryptPasswordEncoder();
-        return encoder;
-    }
 
 }
