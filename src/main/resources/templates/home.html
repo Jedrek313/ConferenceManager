@@ -1,15 +1,26 @@
+
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml"
-xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Home</title>
-</head>
+    xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head th:replace="header"> </head>
 <body>
 <h1>
     Home
 </h1>
+
+
+<div sec:authorize="isAuthenticated()">
+    This content is only shown to authenticated users.
+</div>
+
+<div class="btn-group">
+    <button type="button" class="btn btn-success">This is a success button</button>
+    <button type="button" class="btn btn-warning">This is a warning button</button>
+    <button type="button" class="btn btn-danger">This is a danger button</button>
+</div>
 <a th:href="@{/conference}">Conference list</a>
 <a th:href="@{/new-conference}">Add conference</a>
+<div lang="en" th:replace="footer"> </div>
 </body>
 </html>

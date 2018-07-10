@@ -16,9 +16,10 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    @Qualifier("userDetailsServiceImpl")
+
+    @Qualifier("userServiceImpl")
     @Autowired
-    private UserDetailsService userDetailsService;
+    UserDetailsService userDetailsService;
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
@@ -39,7 +40,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
             .formLogin() // for form login we customize login process
                 .loginPage("/login") // for login page we will show our custom login form
-                .defaultSuccessUrl("/")
+                .defaultSuccessUrl("/home")
                 .permitAll() // allow everyone to see the login page
                 .and()
             .logout().permitAll() // add logout support
