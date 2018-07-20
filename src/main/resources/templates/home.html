@@ -5,6 +5,7 @@
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head th:replace="header"> </head>
 <body>
+<div class="container">
 <h1>
     Home
 </h1>
@@ -14,13 +15,13 @@
     This content is only shown to authenticated users.
 </div>
 
-<div class="btn-group">
-    <button type="button" class="btn btn-success">This is a success button</button>
-    <button type="button" class="btn btn-warning">This is a warning button</button>
-    <button type="button" class="btn btn-danger">This is a danger button</button>
-</div>
+<form th:action="@{/logout}" method="post">
+    <input type="submit" value="Sign Out"/>
+</form>
 <a th:href="@{/conference}">Conference list</a>
 <a th:href="@{/new-conference}">Add conference</a>
+
+</div>
 <div lang="en" th:replace="footer"> </div>
 </body>
 </html>

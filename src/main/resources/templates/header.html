@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"
+      xmlns:form="http://www.springframework.org/tags/form"
+    xmlns:fmt="http://java.sun.com/jsp/jstl/fmt">
 <head>
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -10,20 +12,21 @@
     <meta name="viewport" content="width=device-width"/>
     <base href="/"/>
     <link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css"/>
-    <script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
-    <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="/webjars/font-awesome/css/font-awesome.min.css"></link>
 </head>
 <body>
 
+<div class="container">
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
     <a class="navbar-brand" href="/">Conference Manager</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
         <ul class="navbar-nav mr-auto">
             <div sec:authorize="hasAuthority('ADMIN')">
                 <li class="nav-item">
@@ -52,12 +55,20 @@
                         <a class="dropdown-item" href="#">Something else here</a>
                     </div>
                 </li>
+                <form:form id="logoutForm" action="/logout" method="post">
+                    <li class="nav-item"><a onclick="$('#logoutForm').submit();" href="#">Logout</a></li>
+                </form:form>
+
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Logout</a>
+                    <a class="nav-link" href="#logout">
+                        Sign out
+                    </a>
                 </li>
             </ul>
         </form>
     </div>
+    </div>
 </nav>
+</div>
 </body>
 </html>

@@ -1,6 +1,8 @@
 package pl.edu.wat.student.pienkowski.jedrzej.conference.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,6 +24,14 @@ public class RegistrationController {
 
     @RequestMapping(value = "/registration", method = GET )
     public String showRegistration(){
+
+        if(SecurityContextHolder.getContext().getAuthentication() != null &&
+                SecurityContextHolder.getContext().getAuthentication().isAuthenticated() &&
+                //when Anonymous Authentication is enabled
+                !(SecurityContextHolder.getContext().getAuthentication()
+                        instanceof AnonymousAuthenticationToken)  ){
+            return "home";
+        }
         return "registration";
     }
 

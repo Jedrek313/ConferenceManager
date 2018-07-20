@@ -43,7 +43,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .defaultSuccessUrl("/home")
                 .permitAll() // allow everyone to see the login page
                 .and()
-            .logout().permitAll() // add logout support
+            .logout().logoutUrl("/logout")
+                .logoutSuccessUrl("/login").permitAll() // add logout support
                 .and()
             .exceptionHandling()
                 .accessDeniedPage("/access-denied"); // to display fancy page when user have not right role
