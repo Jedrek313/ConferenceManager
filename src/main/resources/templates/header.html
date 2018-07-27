@@ -16,8 +16,6 @@
 </head>
 <body>
 
-<div class="container">
-
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
     <a class="navbar-brand" href="/">Conference Manager</a>
@@ -55,12 +53,8 @@
                         <a class="dropdown-item" href="#">Something else here</a>
                     </div>
                 </li>
-                <form:form id="logoutForm" action="/logout" method="post">
-                    <li class="nav-item"><a onclick="$('#logoutForm').submit();" href="#">Logout</a></li>
-                </form:form>
-
                 <li class="nav-item">
-                    <a class="nav-link" href="#logout">
+                    <a class="nav-link" href="/logout">
                         Sign out
                     </a>
                 </li>
@@ -69,6 +63,5 @@
     </div>
     </div>
 </nav>
-</div>
 </body>
 </html>

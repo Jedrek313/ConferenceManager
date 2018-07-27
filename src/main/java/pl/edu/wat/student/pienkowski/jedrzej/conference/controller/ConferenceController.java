@@ -2,8 +2,6 @@ package pl.edu.wat.student.pienkowski.jedrzej.conference.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import pl.edu.wat.student.pienkowski.jedrzej.conference.entity.Conference;
 import pl.edu.wat.student.pienkowski.jedrzej.conference.repository.ConferenceRepository;
