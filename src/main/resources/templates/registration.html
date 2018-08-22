@@ -3,23 +3,28 @@
       xmlns:th="http://thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Registration</title>
+    <title>Login Page</title>
+
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 </head>
 <body>
-<div id="content">
-    <h1>Registration</h1>
-    <form name="f" th:action='@{/registration}' method="POST">
-        <table>
-            <tr><td>User:</td><td>
-                <input type='text' name="username" value=""/></td></tr>
-            <tr><td>Password:</td><td>
-                <input type="password" name="password" value=""/></td></tr>
-            <tr><td colspan="2">
-                <input name="submit" type="submit" value="Create new account"/></td></tr>
-        </table>
-    </form>
-    <a th:href="@{/login}">Sign in</a>
+<div class="container">
+    <div id="content">
+        <h1>Registration</h1>
+        <form name="f" th:action='@{/registration}' method="POST">
+            <table>
+                <tr><td>User:</td><td>
+                    <input type='text' name="username" value=""/></td></tr>
+                <tr><td>Password:</td><td>
+                    <input type="password" name="password" value=""/></td></tr>
+                <tr><td colspan="2">
+                    <input name="submit" type="submit" value="Create new account"/></td></tr>
+            </table>
+        </form>
+        <a th:href="@{/login}">Sign in</a>
+    </div>
 </div>
-
 </body>
 </html>

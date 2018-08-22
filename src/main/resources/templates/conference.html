@@ -1,13 +1,76 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Conference Page</title>
-</head>
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head th:replace="header"> </head>
 <body>
-<h1>
-    Conference
-</h1>
+<div class="container">
+
+    <h1>
+        Conference
+    </h1>
+
+
+    <div class="d-flex w-100 justify-content-between">
+        <p th:text="${conference.name}">Name</p>
+        <p th:text="${conference.start}">Name</p>
+        <p th:text="${conference.end}">Name</p>
+    </div>
+    <h1>
+        Events
+    </h1>
+    <a class="list-group-item">
+        <div th:each="event : ${events}" class="list-group">
+        <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1" th:text="${event.name}"></h5>
+        </div>
+        </div>
+    </a>
+
+    <!-- Trigger the modal with a button -->
+    <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Create event</button>
+
+    <!-- Modal -->
+    <div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Create event</h4>
+                </div>
+                <div class="modal-body">
+                    <form name="f" th:action='@{/conference/{id}(id=${conference.id})}' method="POST">
+                        <table>
+                            <tr><td>Name:</td><td>
+                                <input type='text' name="name" value=""/></td></tr>
+                            <tr><td>Start date:</td><td>
+                                <input type="text" name="start" placeholder="YYYY-MM-DD HH:MM:NN" value=""/></td></tr>
+                            <tr><td>End date:</td><td>
+                                <input type="text" name="end" placeholder="YYYY-MM-DD HH:MM:NN" value=""/></td></tr>
+                            <tr><td>Description:</td><td>
+                                <input type="text" name="description" value=""/></td></tr>
+                            <tr><td colspan="2">
+                                <input name="submit" type="submit" value="Add event"/></td></tr>
+                        </table>
+                    </form>
+                    <a th:href="@{/}">Home screen</a>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <a th:href="@{/}">Home screen</a>>
+
+    <a th:href="@{/new-conference}">Add conference</a>
+
+</div>
+<div lang="en" th:replace="footer"> </div>
 </body>
 </html>

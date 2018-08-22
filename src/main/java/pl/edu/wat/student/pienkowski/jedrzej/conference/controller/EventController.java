@@ -3,11 +3,11 @@ package pl.edu.wat.student.pienkowski.jedrzej.conference.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-@Controller
-public class HomeController {
+import static org.springframework.web.bind.annotation.RequestMethod.GET;
+import static org.springframework.web.bind.annotation.RequestMethod.POST;
 
-    @RequestMapping(value = {"/", "/home"})
-    public String showHome(){
-        return "home";
-    }
+@Controller
+public class EventController {
+
+
 }
